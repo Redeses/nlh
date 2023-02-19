@@ -1,6 +1,7 @@
 //an info box, with also a possibility to have some other interactable data
 import React from 'react';
 import jsonUtility from '../../UtilityClasses/TextjsonUtility';
+import "./MainDisplay.css"
 
 export default class MaindisplayBox extends React.Component{
 
@@ -26,8 +27,8 @@ export default class MaindisplayBox extends React.Component{
 
     render(){
     return (
-        <div className='mainubuttoncontainer'>
-            <div className='MainButtonHeader'>
+        <div className='mainbuttonContainer'>
+            <div className='mainButtonHeader'>
                 <h1>Testing header</h1>
             </div>
         </div>
