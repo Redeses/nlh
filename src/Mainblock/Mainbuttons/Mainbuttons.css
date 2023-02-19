@@ -1,0 +1,24 @@
+
+
+.MBI_cont{
+    display: block;
+}
+
+.MBI_button{height: 100px;
+    width:100%;
+    min-width: 200px;
+    display: block;
+    margin: 10px;
+    background-color: aqua;
+}
+
+.mainubuttoncontainer{
+    position: relative;
+    left:35%;
+    width:40%;
+    min-width: 100px;
+    height: 500px;
+    background-color:azure;
+}
+
+@media only screen and (max-width: 750px) {}
