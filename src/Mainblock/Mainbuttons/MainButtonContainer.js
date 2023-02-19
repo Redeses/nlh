@@ -16,6 +16,7 @@ export default class MainButtonContainer extends React.Component{
             displayType:"D",
 
         }
+        this.createButtons=this.createButtons.bind(this)
     }
 
     componentDidMount(){}
