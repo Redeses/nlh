@@ -1,0 +1,26 @@
+
+
+.maindisplayContainer{
+    position: absolute;
+    width: 90%;
+    height: 900px;
+    left: 5%;
+    z-index: 10;
+}
+
+.displayInteractive_container{
+    width: fit-content;
+    height: fit-content;
+    
+    background-color: rgba(90, 140, 140, 0.7);
+
+}
+
+.displaytext_container{
+
+    width: fit-content;
+    height: fit-content;
+    
+    background-color: rgba(45, 140, 240, 0.7);
+
+}

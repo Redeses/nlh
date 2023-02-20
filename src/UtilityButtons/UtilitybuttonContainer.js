@@ -1,10 +1,11 @@
 //an info box, with also a possibility to have some other interactable data
 import React from 'react';
 import "./Utility.css"
-
+import HelpButton from './HelpButton';
+import ExtraButton from './ExtraButton';
 
 //used the keep extra buttons. Will most likely made into an openable popup menu later on
-export default class ExtraButton extends React.Component{
+export default class UtlityButtonContainer extends React.Component{
 
 
     constructor(props){
@@ -22,8 +23,9 @@ export default class ExtraButton extends React.Component{
     render(){
     return (
         
-        <div className='ExtraButtonContainer'>
-            <button className='ExtraButton'>EXTRA</button>
+        <div className='UtilityContainer'>
+            
+        
         </div>
 
     )}

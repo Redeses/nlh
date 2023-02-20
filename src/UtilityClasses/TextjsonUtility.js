@@ -1,5 +1,5 @@
 //used to modify JSON. Trigger saving in localStoragehandler
-//
+//used also to get data from the json
 import data from "../app_texts.json"
 
 export default class jsonUtility{
@@ -31,4 +31,11 @@ export default class jsonUtility{
     getARowNumbers(){
         return this.proxyData.number_of_questions
     }
+
+    //allows the changing on json data based on the admin view
+    saveJsonData(){
+
+    }
+
+
 }

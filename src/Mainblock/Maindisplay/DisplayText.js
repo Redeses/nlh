@@ -24,7 +24,7 @@ export default class DisplayText extends React.Component{
     render(){
     return (
         <div className='displaytext_container'>
-            
+            <p className='displaytext'></p>
         </div>
 
     )}

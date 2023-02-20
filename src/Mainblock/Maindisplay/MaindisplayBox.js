@@ -2,7 +2,12 @@
 import React from 'react';
 import jsonUtility from '../../UtilityClasses/TextjsonUtility';
 import "./MainDisplay.css"
+import Popup from 'reactjs-popup';
+import DisplayInteractive from './DisplayInteractive';
+import DisplayText from './DisplayText';
 
+
+//The boxes are opened by clicking other buttons like ExtraButton and HelpButton
 export default class MaindisplayBox extends React.Component{
 
 
@@ -16,7 +21,6 @@ export default class MaindisplayBox extends React.Component{
     }
 
     componentDidMount(){
-        this.createButtons()
     }
 
     getAppropriateData(){
@@ -27,10 +31,18 @@ export default class MaindisplayBox extends React.Component{
 
     render(){
     return (
-        <div className='mainbuttonContainer'>
-            <div className='mainButtonHeader'>
-                <h1>Testing header</h1>
-            </div>
+        
+        <div className='maindisplayContainer'>
+            <Popup  open={this.props.openInteractivePopup} position="center center">
+                    {close =>(<DisplayInteractive closed={close}/>)}
+                    
+            </Popup>
+
+            <Popup  pen={this.props.openTextPopup}  position="center center">
+                {close =>(<DisplayText closed={close} buttons={this.props.buttons} addToButtons={this.props.addToButtons} neutral={this.props.neutra}/>)}
+                    
+            </Popup>
+        
         </div>
 
     )}

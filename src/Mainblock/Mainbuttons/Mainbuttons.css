@@ -21,4 +21,19 @@
     background-color:azure;
 }
 
+.mainbuttonHeader{
+    display: inline-block;
+}
+
+.backButton{
+    
+    display: inline-block;
+}
+
+.forwardButton{
+    
+    display: inline-block;
+}
+
+
 @media only screen and (max-width: 750px) {}

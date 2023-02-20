@@ -18,7 +18,9 @@ export default class MainButtonContainer extends React.Component{
         super(props);
         this.state={
             displayType:"D",
-            buttonArray:[]
+            buttonArray:[],
+            currentQuestionareNro:0,
+            totalQuestions:jsonUtility.getInstance().getARowNumbers()
 
         }
         this.createButtons=this.createButtons.bind(this)
@@ -28,9 +30,24 @@ export default class MainButtonContainer extends React.Component{
         this.createButtons()
     }
 
+
+    questionareBackwards(){
+        this.setState({currentQuestionareNro:this.state.currentQuestionareNro-1})
+    }
+
+    questionareForwards(){
+        this.setState({currentQuestionareNro:this.state.currentQuestionareNro+1})
+    }
+
+
+    //handles when backbutton is clicked on the device
+    backButtonHandler=(e)=>{
+        e.prevenDefault()
+    }
+
     createButtons(){
         var proyArray=[]
-        var lenght=5//jsonUtility.getInstance().getARowNumbers()
+        var lenght=5//
         var x=0;
         for(x;x<lenght;x++){
             proyArray.push(<MainButtonInstance key={x} buttonIndex={x}/>)
@@ -46,7 +63,9 @@ export default class MainButtonContainer extends React.Component{
     return (
         <div className='mainubuttoncontainer'>
             <div className='MainButtonHeader'>
-                <h1>Testing header</h1>
+                <button className='backButton' onClick={this.questionareBackwards}>back</button>
+                <h1 className='backButton'>Testing header</h1>
+                <button className='forwardButton' onClick={this.questionareForwards}>forward</button>
             </div>
             {this.state.buttonArray}
         </div>
