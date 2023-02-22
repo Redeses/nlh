@@ -1,21 +1,31 @@
 .UtilityContainer{
-
+    background-color: bisque;
+    width: 100px;
+    float: left;
 }
 
 .HelpButton{
+    width: 50px;
+    height: 50px;
+    
+    z-index: 11;
 
 }
 
 .HelpButtonContainer{
-    
+    margin: 10px
 }
 
 
 .ExtraButton{
-
+    width: 50px;
+    height: 50px;
+    
+    z-index: 11;
 }
 
 .ExtraButtonContainer{
-    
+
+    margin:10px
 }
 

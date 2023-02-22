@@ -11,47 +11,65 @@
         "error_text":"Unkown error has occurred",
         "app-eplanation_text":"Tätä aplikaatiota käytetään potilaan tilan arvioimiseen. Vastaan potilan tilasta kysymyksiin"
     },
-    "questionare_texts":{
-        "question_1":{
+    "questionare_texts":[
+        {
+            "index":1,
             "question":"Kysymys numero 1",
             "help_text":"Tämä kysymys referoi kysymyksessä 1 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero1URL'.com"
+            "url_to_guide":"https://'kysymysnumero1URL'.com",
+            "values":[0,1,2,3,4,5]
         },
-        "question_2":{
+        {
+            "index":2,
             "question":"Kysymys numero 2",
             "help_text":"Tämä kysymys referoi kysymyksessä 2 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero2URL'.com"
+            "url_to_guide":"https://'kysymysnumero2URL'.com",
+            "values":[2,4,6,8,10,12]
         },
-        "question_3":{
+        {
+            "index":3,
             "question":"Kysymys numero 3",
             "help_text":"Tämä kysymys referoi kysymyksessä 3 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero3URL'.com"
+            "url_to_guide":"https://'kysymysnumero3URL'.com",
+            "values":[0,1,2,3,4,5]
         },
-        "question_4":{
+        {
+            "index":4,
             "question":"Kysymys numero 4",
             "help_text":"Tämä kysymys referoi kysymyksessä 4 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero4URL'.com"
+            "url_to_guide":"https://'kysymysnumero4URL'.com",
+            "values":[0,1,2,3,4,5]
         },
-        "question_5":{
+        {
+            "index":5,
             "question":"Kysymys numero 5",
             "help_text":"Tämä kysymys referoi kysymyksessä 5 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero5URL'.com"
+            "url_to_guide":"https://'kysymysnumero5URL'.com",
+            "values":[0,1,2,3,4,5]
         },
-        "question_6":{
+        {
+            "index":6,
             "question":"Kysymys numero 6",
             "help_text":"Tämä kysymys referoi kysymyksessä 6 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero6URL'.com"
+            "url_to_guide":"https://'kysymysnumero6URL'.com",
+            "values":[0,1,2,3,4,5]
         },
-        "question_7":{
+        {
+            "index":7 ,
             "question":"Kysymys numero 7",
             "help_text":"Tämä kysymys referoi kysymyksessä 7 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero7URL'.com"
+            "url_to_guide":"https://'kysymysnumero7URL'.com",
+            "values":[0,1,2,3,4,5]
         },
-        "question_8":{
+        {
+            "index":8,
             "question":"Kysymys numero 8",
             "help_text":"Tämä kysymys referoi kysymyksessä 8 mainittuu potilastilaan",
-            "url_to_guide":"https://'kysymysnumero8URL'.com"
+            "url_to_guide":"https://'kysymysnumero8URL'.com",
+            "values":[0,1,2,3,4,5]
         }
-    }
+
+    ]
+    
     
 }]

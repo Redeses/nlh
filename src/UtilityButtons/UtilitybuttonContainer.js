@@ -24,8 +24,8 @@ export default class UtlityButtonContainer extends React.Component{
     return (
         
         <div className='UtilityContainer'>
-            
-        
+            <HelpButton showDisplay={this.props.showDisplay}/>
+            <ExtraButton showDisplay={this.props.showDisplay}/>
         </div>
 
     )}

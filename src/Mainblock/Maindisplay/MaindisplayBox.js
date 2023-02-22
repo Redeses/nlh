@@ -5,46 +5,58 @@ import "./MainDisplay.css"
 import Popup from 'reactjs-popup';
 import DisplayInteractive from './DisplayInteractive';
 import DisplayText from './DisplayText';
+import Proptypes from "prop-types"
+import OutsideAlerter from './Popuohook';
+
 
 
 //The boxes are opened by clicking other buttons like ExtraButton and HelpButton
-export default class MaindisplayBox extends React.Component{
+ const MaindisplayBox =({showDisplay,openInteractivePopup,openTextPopup})=>{
+    // trigger on component mount
+    var bool1=React.useRef(false);
+    React.useEffect(() => {
+        //console.log(openInteractivePopup)
+    }, [showDisplay,openInteractivePopup,openTextPopup]);
 
 
-    constructor(props){
-        super(props);
-        this.state={
-            Innertype:"D",
-            inner:"text"//this will most likely go to under components. Maybe add functional react? 
+    /*
+    var [showText, showInteractive] = React.useState(openInteractivePopup,openTextPopup);
+    
 
-        }
-    }
+    React.useEffect(() => {
+      if (openInteractivePopup) {
+        
+      }
+    }, [openInteractivePopup,openTextPopup]);
+    */
 
-    componentDidMount(){
-    }
-
-    getAppropriateData(){
-
-    }
-
-    handleButtonClick(){}
-
-    render(){
+    
+    
     return (
         
         <div className='maindisplayContainer'>
-            <Popup  open={this.props.openInteractivePopup} position="center center">
-                    {close =>(<DisplayInteractive closed={close}/>)}
-                    
+            
+            <Popup  open={openInteractivePopup} onClose={event=>showDisplay(event, "null")} modal position="center center">
+                
+                {close =>(<div><DisplayInteractive close={close}/>
+            <button className='closeButton' onClick={close}>close</button></div>)}
+                       
             </Popup>
 
-            <Popup  pen={this.props.openTextPopup}  position="center center">
-                {close =>(<DisplayText closed={close} buttons={this.props.buttons} addToButtons={this.props.addToButtons} neutral={this.props.neutra}/>)}
-                    
+            <Popup  open={openTextPopup} onOpen={console.log("opening")} onClose={event=>showDisplay(event, "null")} modal position="center center">
+                {close =>(<div><DisplayText close={close}/>
+            <button className='closeButton' onClick={close}>close</button></div>)}
             </Popup>
         
         </div>
 
-    )}
-
+    )
 }
+
+
+
+/*MaindisplayBox.propTypes = {
+    children: Proptypes.element.isRequired
+  };
+*/
+  export default MaindisplayBox

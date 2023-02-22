@@ -23,7 +23,7 @@ export default class HelpButton extends React.Component{
     return (
         
         <div className='HelpButtonContainer'>
-            <button className='HelpButton'>HELP</button>
+            <button className='HelpButton' onClick={event=>this.props.showDisplay(event,["text"])}>HELP</button>
         </div>
 
     )}

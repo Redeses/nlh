@@ -9,18 +9,21 @@ export default class DataHandler {
     answersNro=0;
     answers=[];
     currentForm="";
+    currentHelpText=""
 
     //proxytext is used to tet the display elements tet change
-    proxyTextArray=[["A proxy"],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]]
+    proxyTextArray=[["A proxy text used to test the display element"],
+    ["this lines really mean nothing and most likely later on will"],
+    ["be made so that a long form text is cut by the program in"],
+    ["to suitably small pieces. However it is important to remember"],
+    ["that the text might be quite long, so a scrolling method might "],
+    ["have to be included. Lets see if we can make this long enough"],
+    ["with a variety of lenght of sentences to test"],
+    ["if the display"],
+    ["works like it should, in most circumnstances. Remember that this is meant for"],
+    ["mobile"]]
+
+    
         
 
 
@@ -36,7 +39,26 @@ export default class DataHandler {
         return this.myInstance;
     }
 
-    getProxyText(){}
+    currentQNumber(qNumber){
+        this.answersNro=qNumber
+    }
+
+    getCurrentQNumber(){
+        return this.answersNro
+    }
+
+    getProxyText(){
+        var string=""
+        this.proxyTextArray.forEach(element=>{
+            string+=element
+        })
+        return string
+    }
+
+
+    getDataFromLocalStorage(){
+
+    }
 
   
 

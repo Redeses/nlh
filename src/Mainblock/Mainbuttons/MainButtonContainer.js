@@ -1,6 +1,7 @@
 
 import React from 'react';
 import jsonUtility from '../../UtilityClasses/TextjsonUtility';
+import DataHandler from '../../UtilityClasses/Datakeeper';
 import MainButtonInstance from './MainButtonInstance';
 import "./Mainbuttons.css"
 
@@ -13,6 +14,7 @@ import "./Mainbuttons.css"
 //TODO get functional components into this project
 export default class MainButtonContainer extends React.Component{
 
+    clickedArray=[];//array of questions clicked and nro of question the user was on. save into localStorage
 
     constructor(props){
         super(props);
@@ -24,33 +26,69 @@ export default class MainButtonContainer extends React.Component{
 
         }
         this.createButtons=this.createButtons.bind(this)
+        this.questionareBackwards=this.questionareBackwards.bind(this)
+        this.questionareForwards=this.questionareForwards.bind(this)
     }
 
     componentDidMount(){
         this.createButtons()
+        this.clickedArray=[this.state.totalQuestions]
     }
 
 
     questionareBackwards(){
-        this.setState({currentQuestionareNro:this.state.currentQuestionareNro-1})
-    }
+        if(this.state.currentQuestionareNro===0) {
+            //add back to "Main menu"
+            return;
+        }else{
+            this.setState({currentQuestionareNro:this.state.currentQuestionareNro-1})
+            DataHandler.getInstance().currentQNumber(this.state.currentQuestionareNro)
+            this.createButtons()
+        }}
 
     questionareForwards(){
-        this.setState({currentQuestionareNro:this.state.currentQuestionareNro+1})
+        if(this.state.currentQuestionareNro===this.state.totalQuestions-1) {
+            //add go to end
+            
+        }else{
+            this.setState({currentQuestionareNro:this.state.currentQuestionareNro+1})
+            DataHandler.getInstance().currentQNumber(this.state.currentQuestionareNro)
+           this.createButtons()
+        }
     }
 
+    //gets local storage data for 
+    getDataArrayFromStorage(){
+
+    }
+
+    //this handlebuttonWillEventually add the buttons value and the clicked key, into an array save to local storage
+    saveButtonPressData=(e, params)=>{
+        this.clickedArray[0].push(this.state.currentQuestionareNro)
+        this.clickedArray[this.state.currentQuestionareNro+1].push([params.index,params.value])
+        //add to localstorage
+    }
 
     //handles when backbutton is clicked on the device
     backButtonHandler=(e)=>{
         e.prevenDefault()
     }
 
+    //shows startmenu
+    startMenu(){}
+
+
+    //shows eneding menu
+    endingMenu(){}
+
+
     createButtons(){
+        //add a function that will get data from datakeeper about button cliks
         var proyArray=[]
         var lenght=5//
         var x=0;
         for(x;x<lenght;x++){
-            proyArray.push(<MainButtonInstance key={x} buttonIndex={x}/>)
+            proyArray.push(<MainButtonInstance key={x} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} buttonIndex={x}/>)
         }
         
         console.log(proyArray)
@@ -68,6 +106,7 @@ export default class MainButtonContainer extends React.Component{
                 <button className='forwardButton' onClick={this.questionareForwards}>forward</button>
             </div>
             {this.state.buttonArray}
+           
         </div>
 
     )}

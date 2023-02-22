@@ -23,7 +23,7 @@ export default class ExtraButton extends React.Component{
     return (
         
         <div className='ExtraButtonContainer'>
-            <button className='ExtraButton'>EXTRA</button>
+            <button className='ExtraButton' onClick={event=>this.props.showDisplay(event,["interactive"])}>EXTRA</button>
         </div>
 
     )}

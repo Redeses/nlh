@@ -6,8 +6,9 @@ function useOutsideAlerter(ref,props) {
     var test="";
   React.useEffect(() => {
     function handleClickOutside(event) {
+        console.log("test on hook")
       if (ref.current && !ref.current.contains(event.target)) {
-        props.change();
+        props.showDisplay(event, "null");
       }
     }
     // Bind the event listener
