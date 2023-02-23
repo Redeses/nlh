@@ -41,6 +41,7 @@ export default class DataHandler {
 
     currentQNumber(qNumber){
         this.answersNro=qNumber
+        console.log("at number: "+ qNumber)
     }
 
     getCurrentQNumber(){

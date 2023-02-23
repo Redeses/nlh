@@ -52,6 +52,13 @@ export default class jsonUtility{
         return this.getSpecificRow(qNro).help_text
     }
 
+    getQuestionHeader(){
+        var qNro=DataHandler.getInstance().getCurrentQNumber()
+        //console.log(qNro)
+        //console.log(this.getSpecificRow(qNro))
+        return this.getSpecificRow(qNro).question
+    }
+
     //gets an array of buttons values at the beginnings
     getButtonValues(buttonNumber){
         var proxyArray=[]

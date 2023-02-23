@@ -3,6 +3,8 @@ import React from 'react';
 import jsonUtility from '../../UtilityClasses/TextjsonUtility';
 import DataHandler from '../../UtilityClasses/Datakeeper';
 import MainButtonInstance from './MainButtonInstance';
+import StartView from './StartAndEndMenus/Startview';
+import EndView from './StartAndEndMenus/Endview';
 import "./Mainbuttons.css"
 
 
@@ -19,19 +21,22 @@ export default class MainButtonContainer extends React.Component{
     constructor(props){
         super(props);
         this.state={
+            noMoveBool:true,
             displayType:"D",
             buttonArray:[],
             currentQuestionareNro:0,
-            totalQuestions:jsonUtility.getInstance().getARowNumbers()
+            totalQuestions:jsonUtility.getInstance().getARowNumbers(),
+            header:"Start menu"
 
         }
         this.createButtons=this.createButtons.bind(this)
         this.questionareBackwards=this.questionareBackwards.bind(this)
         this.questionareForwards=this.questionareForwards.bind(this)
+        this.getStartPoint=this.getStartPoint.bind(this)
     }
 
     componentDidMount(){
-        this.createButtons()
+        this.getStartPoint()
         this.clickedArray=[this.state.totalQuestions]
     }
 
@@ -51,11 +56,18 @@ export default class MainButtonContainer extends React.Component{
             //add go to end
             
         }else{
+            console.log("mmoving to question "+this.state.currentQuestionareNro+" up")
+            DataHandler.getInstance().currentQNumber(this.state.currentQuestionareNro+1)
             this.setState({currentQuestionareNro:this.state.currentQuestionareNro+1})
-            DataHandler.getInstance().currentQNumber(this.state.currentQuestionareNro)
            this.createButtons()
         }
     }
+
+    //figures from local storage/cookie data where to continue the questionare
+    getStartPoint(){
+        this.startMenu()
+    }
+
 
     //gets local storage data for 
     getDataArrayFromStorage(){
@@ -75,24 +87,34 @@ export default class MainButtonContainer extends React.Component{
     }
 
     //shows startmenu
-    startMenu(){}
+    startMenu(){
+        var proyArray=[]
+       
+        proyArray.push(<StartView key={0} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} />)
+        this.setState({buttonArray:proyArray,noMoveBool:true})
+    }
 
 
     //shows eneding menu
-    endingMenu(){}
+    endingMenu(){
+        var proyArray=[]
+       
+        proyArray.push(<EndView key={0} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} />)
+        this.setState({buttonArray:proyArray,noMoveBool:true})
+    }
 
 
     createButtons(){
         //add a function that will get data from datakeeper about button cliks
+        console.log("creating buttons")
         var proyArray=[]
         var lenght=5//
         var x=0;
         for(x;x<lenght;x++){
             proyArray.push(<MainButtonInstance key={x} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} buttonIndex={x}/>)
         }
-        
-        console.log(proyArray)
-        this.setState({buttonArray:proyArray})
+        //console.log(proyArray)
+        this.setState({buttonArray:proyArray,noMoveBool:false,header:jsonUtility.getInstance().getQuestionHeader()})
     }
 
     handleButtonClick(){}
@@ -101,9 +123,9 @@ export default class MainButtonContainer extends React.Component{
     return (
         <div className='mainubuttoncontainer'>
             <div className='MainButtonHeader'>
-                <button className='backButton' onClick={this.questionareBackwards}>back</button>
-                <h1 className='backButton'>Testing header</h1>
-                <button className='forwardButton' onClick={this.questionareForwards}>forward</button>
+                <button className='backButton' style={{display: this.state.noMoveBool ? 'none' : 'inline-block' }} onClick={this.questionareBackwards}>back</button>
+                <h1 className='backButton'>{this.state.header}</h1>
+                <button className='forwardButton' style={{display: this.state.noMoveBool ? 'none' : 'inline-block' }} onClick={this.questionareForwards}>forward</button>
             </div>
             {this.state.buttonArray}
            

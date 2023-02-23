@@ -1,6 +1,5 @@
 
 import React from 'react';
-import jsonUtility from '../../UtilityClasses/TextjsonUtility';
 
 
 export default class StartView extends React.Component{
