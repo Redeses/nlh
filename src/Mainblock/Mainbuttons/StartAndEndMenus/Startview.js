@@ -1,5 +1,6 @@
 
 import React from 'react';
+import "./SE.css"
 
 
 export default class StartView extends React.Component{
@@ -14,7 +15,11 @@ export default class StartView extends React.Component{
     }
 
     componentDidMount(){
-        this.createButtons()
+        
+    }
+
+    handleStartClick=()=>{
+        this.props.goToQuestionare()
     }
 
 
@@ -22,8 +27,8 @@ export default class StartView extends React.Component{
 
     render(){
     return (
-        <div className='startviewcontainer'>
-            
+        <div className='startViewContainer'>
+            <button className='startQuestionareButton' onClick={this.handleStartClick}>Start questioanre</button>
            
         </div>
 

@@ -21,8 +21,10 @@
     background-color:azure;
 }
 
-.mainbuttonHeader{
+.mainButtonHeader{
     display: inline-block;
+    position: relative;
+    width: 100%;
 }
 
 .backButton{

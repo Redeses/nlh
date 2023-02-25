@@ -20,18 +20,19 @@ export default class MainButtonInstance extends React.Component{
         console.log(this.props.QNro)
     }
 
-    handleClick=(e)=>{
+    handleClick=(e, params)=>{
         e.preventDefault()
         
         console.log(this.props.QNro)
         console.log(jsonUtility.getInstance().getSpecificRow(this.props.QNro));
+        this.props.saveButtonPress(e,params)
     }
 
 
     render(){
         return (
             <div className='MBI_cont'>
-                <button className='MBI_button' onClick={this.handleClick}>button value: {this.state.values[this.props.QNro]}</button>
+                <button className='MBI_button' onClick={event=>(this.handleClick(event, [this.props.buttonIndex,this.state.values[this.props.QNro]]))}>button value: {this.state.values[this.props.QNro]}</button>
             </div>
         )}
 

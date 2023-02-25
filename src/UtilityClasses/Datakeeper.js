@@ -7,7 +7,7 @@ export default class DataHandler {
 
     static myInstance = null;
     answersNro=0;
-    answers=[];
+    answers=[8,[1,1],[2,4],[1,1],[4,4],[2,2],[1,1],[3,7],[2,3]];
     currentForm="";
     currentHelpText=""
 
@@ -37,6 +37,14 @@ export default class DataHandler {
         }
 
         return this.myInstance;
+    }
+
+    saveAnswerArray(arraySaveable){
+        this.answers=arraySaveable
+    }
+    
+    getAnswerArray(){
+        return this.answers
     }
 
     currentQNumber(qNumber){

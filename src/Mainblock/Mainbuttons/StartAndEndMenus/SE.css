@@ -1,0 +1,53 @@
+
+.startViewContainer{
+    padding-top: 50px;
+}
+
+.startQuestionareButton{
+
+}
+
+.endViewContainer{
+
+}
+
+.scoreBoard{
+
+}
+
+.extraOptions{
+
+}
+
+.extraButton{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.extraRow{
+    margin-bottom: 10px;
+}
+
+.reportButton{
+
+
+} 
+
+.checkResultButton{}
+
+.shareButton{
+
+}
+
+.mysteryButton{
+
+}
+
+.reDoQButton{}
+
+

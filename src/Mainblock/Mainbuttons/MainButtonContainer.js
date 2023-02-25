@@ -37,13 +37,19 @@ export default class MainButtonContainer extends React.Component{
 
     componentDidMount(){
         this.getStartPoint()
-        this.clickedArray=[this.state.totalQuestions]
+        //this.clickedArray=[this.state.totalQuestions]
+        var x = this.state.totalQuestions+2
+        while(x>0){
+            this.clickedArray.push();
+            console.log("making array")
+            x=x-1
+        }
     }
 
 
     questionareBackwards(){
         if(this.state.currentQuestionareNro===0) {
-            //add back to "Main menu"
+            this.startMenu()
             return;
         }else{
             this.setState({currentQuestionareNro:this.state.currentQuestionareNro-1})
@@ -53,7 +59,7 @@ export default class MainButtonContainer extends React.Component{
 
     questionareForwards(){
         if(this.state.currentQuestionareNro===this.state.totalQuestions-1) {
-            //add go to end
+            this.endingMenu()
             
         }else{
             console.log("mmoving to question "+this.state.currentQuestionareNro+" up")
@@ -65,7 +71,8 @@ export default class MainButtonContainer extends React.Component{
 
     //figures from local storage/cookie data where to continue the questionare
     getStartPoint(){
-        this.startMenu()
+        //this.startMenu()
+        this.endingMenu()
     }
 
 
@@ -76,8 +83,10 @@ export default class MainButtonContainer extends React.Component{
 
     //this handlebuttonWillEventually add the buttons value and the clicked key, into an array save to local storage
     saveButtonPressData=(e, params)=>{
-        this.clickedArray[0].push(this.state.currentQuestionareNro)
-        this.clickedArray[this.state.currentQuestionareNro+1].push([params.index,params.value])
+        this.clickedArray[0]=(this.state.currentQuestionareNro+1)
+        this.clickedArray[this.state.currentQuestionareNro+1]=([params[0],params[1]])
+        DataHandler.getInstance().saveAnswerArray(this.clickedArray)
+        console.log(this.clickedArray)
         //add to localstorage
     }
 
@@ -90,8 +99,8 @@ export default class MainButtonContainer extends React.Component{
     startMenu(){
         var proyArray=[]
        
-        proyArray.push(<StartView key={0} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} />)
-        this.setState({buttonArray:proyArray,noMoveBool:true})
+        proyArray.push(<StartView key={0}  goToQuestionare={this.goToQuestions} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} />)
+        this.setState({buttonArray:proyArray,noMoveBool:true,header:"Start menu"})
     }
 
 
@@ -99,11 +108,17 @@ export default class MainButtonContainer extends React.Component{
     endingMenu(){
         var proyArray=[]
        
-        proyArray.push(<EndView key={0} saveButtonPress={this.saveButtonPressData} QNro={this.state.currentQuestionareNro} />)
-        this.setState({buttonArray:proyArray,noMoveBool:true})
+        proyArray.push(<EndView key={0}  showDisplay={this.props.showDisplay} saveButtonPress={this.saveButtonPressData} goToQuestionare={this.goToQuestions} QNro={this.state.currentQuestionareNro} />)
+        this.setState({buttonArray:proyArray,noMoveBool:true,header:"End menu"})
+    }
+
+    goToQuestions=()=>{
+        console.log("test")
+        this.createButtons()
     }
 
 
+    //used to make the questionare view
     createButtons(){
         //add a function that will get data from datakeeper about button cliks
         console.log("creating buttons")
@@ -122,7 +137,7 @@ export default class MainButtonContainer extends React.Component{
     render(){
     return (
         <div className='mainubuttoncontainer'>
-            <div className='MainButtonHeader'>
+            <div className='mainButtonHeader'>
                 <button className='backButton' style={{display: this.state.noMoveBool ? 'none' : 'inline-block' }} onClick={this.questionareBackwards}>back</button>
                 <h1 className='backButton'>{this.state.header}</h1>
                 <button className='forwardButton' style={{display: this.state.noMoveBool ? 'none' : 'inline-block' }} onClick={this.questionareForwards}>forward</button>
