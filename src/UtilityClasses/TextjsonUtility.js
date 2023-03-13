@@ -72,7 +72,11 @@ export default class jsonUtility{
     //allows the changing on json data based on the admin view
     //gets a ready made json
     saveJsonData(){
+        
+    }
 
+    getJsonData(){
+        return this.proxyData
     }
 
 

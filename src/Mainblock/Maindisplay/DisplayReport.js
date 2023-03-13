@@ -1,7 +1,4 @@
-//React class used to show interactive elements in the help display
-// react class used to show text only data to user
-
-//The idea will be able to create a new Json that is save to text_json
+//element used to show report of the answers
 import React from 'react';
 import DataHandler from '../../UtilityClasses/Datakeeper';
 import jsonUtility from '../../UtilityClasses/TextjsonUtility';

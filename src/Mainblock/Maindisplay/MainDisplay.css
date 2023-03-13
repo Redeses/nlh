@@ -26,6 +26,29 @@ p{
     font-size: larger;
 }
 
+/*From here on is Interactive and its subelements' css*/
 
+.interactive_form{}
+
+
+.interactiveElement{
+    display: block;
+}
+
+
+.changeQCont{}
+
+
+.question_change_container{}
+
+.question_change{}
+
+.change_question_values{
+    display: inline-block;
+}
+
+.add_value_interactive{}
+
+.clear_value_interactive{}
 
 
